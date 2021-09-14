@@ -1,10 +1,9 @@
-import React from 'react'
-import PropTypes from 'prop-types'
+import React from 'react';
+import PropTypes from 'prop-types';
 import { Card, Image } from 'antd';
 import messages from 'utils/messages';
 
-
-const ImageCard = props => {
+const ImageCard = (props) => {
   const { title, url, thumbnailUrl } = props;
   return (
     <Card bordered hoverable>
@@ -19,7 +18,7 @@ const ImageCard = props => {
       <Card.Meta title={title} />
     </Card>
   );
-}
+};
 
 ImageCard.propTypes = {
   title: PropTypes.string,
@@ -35,4 +34,4 @@ ImageCard.defaultProps = {
   thumbnailUrl: 'https://via.placeholder.com/150/ab567',
 };
 
-export default ImageCard
+export default ImageCard;

@@ -15,14 +15,14 @@ const placeholders = {
 };
 
 const misc = {
-  viewFullSize: 'View full size'
-}
+  viewFullSize: 'View full size',
+};
 
 const messages = {
   headers,
   labels,
   placeholders,
-  misc
+  misc,
 };
 
 export default messages;

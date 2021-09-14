@@ -7,7 +7,9 @@ const CommonSelect = (props) => {
   return (
     <Select {...rest}>
       {options.map((option) => (
-        <Select.Option key={option.value} value={option.value}>{option.optionLabel}</Select.Option>
+        <Select.Option key={option.value} value={option.value}>
+          {option.optionLabel}
+        </Select.Option>
       ))}
     </Select>
   );

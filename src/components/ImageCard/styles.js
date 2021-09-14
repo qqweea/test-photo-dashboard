@@ -3,7 +3,7 @@ import styled from 'styled-components';
 
 export const SkeletonCard = styled(Card)`
   height: 100%;
-  .ant-card-body{
+  .ant-card-body {
     height: 100%;
     display: flex;
     flex-direction: column;

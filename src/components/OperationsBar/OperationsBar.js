@@ -8,9 +8,12 @@ import { OperationsBarContainer } from './styles';
 const OperationsBar = () => {
   return (
     <OperationsBarContainer>
-      <Row gutter={12} justify='space-between'>
+      <Row gutter={12} justify="space-between">
         <Col xs={24} md={8}>
-          <Input placeholder={messages.placeholders.search} label={messages.labels.search} />
+          <Input
+            placeholder={messages.placeholders.search}
+            label={messages.labels.search}
+          />
         </Col>
         <Col xs={24} md={8}>
           <Input

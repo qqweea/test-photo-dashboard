@@ -24,7 +24,7 @@ const AppLayout = (props) => {
   return (
     <Layout>
       <StyledHeader>
-        <Row align='middle'>
+        <Row align="middle">
           <Col xs={22} md={24}>
             <StyledTitle>{messages.headers.title}</StyledTitle>
           </Col>
@@ -45,7 +45,7 @@ const AppLayout = (props) => {
           ) : (
             <Drawer
               title={messages.headers.drawerTitle}
-              placement='right'
+              placement="right"
               onClose={closeDrawer}
               visible={isDrawerOpen}
             >

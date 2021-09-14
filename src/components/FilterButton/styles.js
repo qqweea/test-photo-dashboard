@@ -6,7 +6,7 @@ export const StyledButton = styled.button.attrs({
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: .5rem;
+  padding: 0.5rem;
   color: #fff;
   margin-left: auto;
   cursor: pointer;

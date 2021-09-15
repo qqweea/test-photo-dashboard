@@ -1,14 +1,14 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { InputSelect, InputText } from '.';
-import { Label } from './styles';
+import { Label, LabelText } from './styles';
 
 const InputFactory = (props) => {
   const { type, label, ...rest } = props;
 
   return (
     <Label>
-      <span>{label}</span>
+      {label && <LabelText>{label}</LabelText>}
       {type === 'text' && <InputText {...rest} />}
       {type === 'select' && <InputSelect {...rest} />}
     </Label>

@@ -6,15 +6,20 @@ import messages from 'utils/messages';
 const ImageCard = (props) => {
   const { title, url, thumbnailUrl } = props;
   return (
-    <Card bordered hoverable>
-      <Image
-        width={'100%'}
-        src={thumbnailUrl}
-        preview={{
-          src: url,
-          mask: messages.misc.viewFullSize,
-        }}
-      />
+    <Card
+      bordered
+      hoverable
+      cover={
+        <Image
+          width={'100%'}
+          src={thumbnailUrl}
+          preview={{
+            src: url,
+            mask: messages.misc.viewFullSize,
+          }}
+        />
+      }
+    >
       <Card.Meta title={title} />
     </Card>
   );
@@ -27,11 +32,9 @@ ImageCard.propTypes = {
 };
 
 ImageCard.defaultProps = {
-  albumId: 76,
-  id: 3787,
-  title: 'sed qui doloremque culpa',
-  url: 'https://via.placeholder.com/600/ab567',
-  thumbnailUrl: 'https://via.placeholder.com/150/ab567',
+  title: '',
+  url: '',
+  thumbnailUrl: '',
 };
 
 export default ImageCard;

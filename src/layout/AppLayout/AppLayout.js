@@ -4,7 +4,6 @@ import { Layout, Drawer, Row, Col } from 'antd';
 import useIsDesktop from 'hooks/useIsDesktop';
 import messages from 'utils/messages';
 import { StyledContent, StyledHeader, StyledTitle } from './styles';
-import { FilterIcon } from 'components/common/Icons';
 import FilterButton from 'components/FilterButton';
 
 const AppLayout = (props) => {
@@ -30,9 +29,7 @@ const AppLayout = (props) => {
           </Col>
           {!isDesktop && (
             <Col xs={2}>
-              <FilterButton onClick={toggleDrawer}>
-                <FilterIcon />
-              </FilterButton>
+              <FilterButton onClick={toggleDrawer} />
             </Col>
           )}
         </Row>
@@ -40,9 +37,8 @@ const AppLayout = (props) => {
 
       <Layout>
         <StyledContent>
-          {isDesktop ? (
-            operationsBar
-          ) : (
+          {operationsBar && isDesktop && operationsBar}
+          {operationsBar && !isDesktop && (
             <Drawer
               title={messages.headers.drawerTitle}
               placement="right"

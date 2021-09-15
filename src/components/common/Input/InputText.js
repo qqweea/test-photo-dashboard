@@ -2,7 +2,7 @@ import React from 'react';
 import { Input } from 'antd';
 
 const InputText = (props) => {
-  return <Input {...props}></Input>;
+  return <Input size="large" {...props}></Input>;
 };
 
 InputText.propTypes = {};

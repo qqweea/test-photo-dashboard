@@ -5,7 +5,7 @@ import { Select } from 'antd';
 const CommonSelect = (props) => {
   const { options, ...rest } = props;
   return (
-    <Select {...rest}>
+    <Select size="large" {...rest}>
       {options.map((option) => (
         <Select.Option key={option.value} value={option.value}>
           {option.optionLabel}

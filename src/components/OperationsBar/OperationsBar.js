@@ -8,7 +8,7 @@ import { OperationsBarContainer } from './styles';
 const OperationsBar = () => {
   return (
     <OperationsBarContainer>
-      <Row gutter={12} justify="space-between">
+      <Row gutter={[12, 12]} justify="space-between">
         <Col xs={24} md={8}>
           <Input
             placeholder={messages.placeholders.search}
@@ -22,7 +22,7 @@ const OperationsBar = () => {
             label={messages.labels.folder}
           />
         </Col>
-        <Col xs={24} md={4}>
+        <Col xs={24} md={6} lg={4}>
           <Input
             type={'select'}
             label={messages.labels.itemsPerPage}

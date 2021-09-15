@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { Pagination } from 'antd';
 import { PaginationWrapper } from './styles';
+import { injectPhotosPartialState } from 'context/photos';
 
 const DesktopPagination = (props) => {
   const { currentPage, totalItems, itemsPerPage, onPageChange, isLoading } = props;
@@ -37,4 +38,12 @@ DesktopPagination.defaultProps = {
   isLoading: false,
 };
 
-export default DesktopPagination;
+const mapStateToProps = (state) => ({
+  currentPage: state.query.currentPage,
+  itemsPerPage: state.query.itemsPerPage,
+  onPageChange: state.photosActions.setCurrentPage,
+  totalItems: state.photos.totalItems,
+  isLoading: state.photos.isLoading,
+});
+
+export default injectPhotosPartialState(mapStateToProps)(DesktopPagination);

@@ -1,5 +1,6 @@
 import { QueryClient, QueryClientProvider } from 'react-query';
 import HomePage from 'pages/HomePage';
+import { withPhotosContext } from 'context/photos';
 
 const queryClient = new QueryClient();
 
@@ -11,4 +12,4 @@ function App() {
   );
 }
 
-export default App;
+export default withPhotosContext(App);

@@ -5,16 +5,17 @@ const headers = {
 
 const labels = {
   search: 'Search images by title',
-  folder: 'Filter images by folder',
+  folder: 'Filter images by album',
   itemsPerPage: 'Items per page',
 };
 
 const placeholders = {
   search: 'Search for a title',
-  folder: 'Search for a folder',
+  folder: 'Search for a album',
 };
 
 const misc = {
+  allAlbums: 'All albums',
   viewFullSize: 'View full size',
 };
 

@@ -1,4 +1,4 @@
-import { Col, Row } from 'antd';
+import { Col, Empty, Row, Typography } from 'antd';
 import ImageCard, { ImageCardSkeleton } from 'components/ImageCard';
 import { injectPhotosPartialState } from 'context/photos';
 import useIsDesktop from 'hooks/useIsDesktop';
@@ -7,8 +7,28 @@ import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
 
 const ImageList = (props) => {
-  const { items, isLoading, loadMore } = props;
+  const { items, isLoading, search, totalItems, currentPage, itemsPerPage, loadMore } = props;
   const isDesktop = useIsDesktop();
+  const hasMore = totalItems > currentPage * itemsPerPage;
+
+  if (!isLoading && items.length === 0) {
+    return (
+      <Empty
+        image={Empty.PRESENTED_IMAGE_SIMPLE}
+        description={
+          search ? (
+            <Typography.Text textCenter strong type="warning">
+              No photos found
+            </Typography.Text>
+          ) : (
+            <Typography.Text textCenter strong type="danger">
+              Something went wrong
+            </Typography.Text>
+          )
+        }
+      />
+    );
+  }
 
   if (isDesktop) {
     return (
@@ -33,16 +53,18 @@ const ImageList = (props) => {
       <InfiniteScroll
         dataLength={items.length}
         next={loadMore}
-        initialLoad={false}
-        pageStart={1}
         style={{ overflow: 'initial' }}
         endMessage={
-          <p style={{ textAlign: 'center' }}>
-            <b>Yay! You have seen it all</b>
-          </p>
+          <Empty
+            style={{ marginTop: '2rem' }}
+            description={
+              <Typography.Text strong>
+                Yay! You have seen it all
+              </Typography.Text>
+            }
+          />
         }
-        hasMore
-        hasChildren={items.length > 0}
+        hasMore={hasMore}
       >
         <Row gutter={[12, 12]}>
           {items.map((item) => (
@@ -51,11 +73,11 @@ const ImageList = (props) => {
             </Col>
           ))}
           {isLoading &&
-          new Array(3).fill().map((val, i) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={i}>
-              <ImageCardSkeleton />
-            </Col>
-          ))}
+            new Array(3).fill().map((val, i) => (
+              <Col xs={24} sm={12} md={8} lg={6} key={i}>
+                <ImageCardSkeleton />
+              </Col>
+            ))}
         </Row>
       </InfiniteScroll>
     </>
@@ -69,18 +91,28 @@ ImageList.propTypes = {
     })
   ),
   isLoading: PropTypes.bool,
+  search: PropTypes.string,
+  totalItems: PropTypes.number,
+  currentPage: PropTypes.number,
+  itemsPerPage: PropTypes.number,
   loadMore: PropTypes.func,
 };
 
 ImageList.defaultProps = {
   items: [],
   isLoading: false,
+  search: '',
+  totalItems: 0,
   loadMore: () => {},
 };
 
 const mapStateToProps = (state) => ({
   items: state.photos.items,
   isLoading: state.photos.isLoading,
+  totalItems: state.photos.totalItems,
+  search: state.query.search,
+  currentPage: state.query.currentPage,
+  itemsPerPage: state.query.itemsPerPage,
   loadMore: state.photosActions.incrementCurrentPage,
 });
 

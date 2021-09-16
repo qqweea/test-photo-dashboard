@@ -14,6 +14,7 @@ const ImageCard = (props) => {
         <Image
           width={'100%'}
           src={thumbnailUrl}
+          fallback={`${process.env.PUBLIC_URL}/broken.png`}
           preview={{
             src: url,
             mask: messages.misc.viewFullSize,

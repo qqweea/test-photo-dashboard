@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { Typography, Layout } from 'antd';
 
 export const StyledTitle = styled(Typography.Title)`
@@ -9,15 +9,22 @@ export const StyledTitle = styled(Typography.Title)`
   }
 `;
 
-export const StyledHeader = styled(Layout.Header)`
+export const StyledHeader = styled(({ isMobile, ...rest }) => <Layout.Header {...rest} />)`
   display: flex;
   align-items: center;
   & > div {
     width: 100%;
   }
+  ${(props) =>
+    props.isMobile &&
+    css`
+      position: fixed;
+      z-index: 1;
+      width: 100%;
+    `}
 `;
 
-export const StyledContent = styled(Layout.Content)`
+export const StyledContent = styled(({ isMobile, ...rest }) => <Layout.Content {...rest} />)`
   width: 100%;
   padding: 2rem 15px;
   margin-right: auto;
@@ -37,4 +44,9 @@ export const StyledContent = styled(Layout.Content)`
   @media (min-width: 1200px) {
     max-width: 1140px;
   }
+  ${(props) =>
+    props.isMobile &&
+    css`
+      margin-top: 64px;
+    `}
 `;

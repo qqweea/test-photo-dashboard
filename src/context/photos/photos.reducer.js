@@ -71,6 +71,7 @@ const reducer = (state, action) => {
       photos: {
         ...state.photos,
         items: [],
+        totalItems: 0,
       },
       query: {
         ...state.query,
@@ -85,6 +86,7 @@ const reducer = (state, action) => {
       photos: {
         ...state.photos,
         items: [],
+        totalItems: 0,
       },
       query: {
         ...state.query,
@@ -99,6 +101,7 @@ const reducer = (state, action) => {
       photos: {
         ...state.photos,
         items: [],
+        totalItems: 0,
       },
       query: {
         ...state.query,

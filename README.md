@@ -33,7 +33,9 @@ This project uses:
 
 ## Assumptions
 
-No major assumptions have been made during development of this project.
+This project assumes that tablet screen size is 768px and up according to Bootstrap breakpoints.
+
+No other major assumptions have been made during development of this project.
 
 ## References
 

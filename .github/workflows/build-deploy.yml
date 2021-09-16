@@ -3,10 +3,10 @@ name: Build & deploy
 on:
   push:
     branches:
-      - setup-github-actions
+      - master
   pull_request:
     branches:
-      - setup-github-actions
+      - master
 
 jobs:
   build:
@@ -38,7 +38,7 @@ jobs:
     name: Deploy
     needs: build
     runs-on: ubuntu-latest
-    if: github.ref == 'refs/heads/setup-github-actions'
+    if: github.ref == 'refs/heads/master'
 
     steps:
       - name: Download artifact

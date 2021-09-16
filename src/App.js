@@ -1,14 +1,14 @@
-import { QueryClient, QueryClientProvider } from 'react-query';
-import HomePage from 'pages/HomePage';
+import ErrorBoundary from 'components/ErrorBoundary';
 import { withPhotosContext } from 'context/photos';
+import ErrorPage from 'pages/ErrorPage/ErrorPage';
+import HomePage from 'pages/HomePage';
 
-const queryClient = new QueryClient();
 
 function App() {
   return (
-    <QueryClientProvider client={queryClient}>
-      <HomePage />
-    </QueryClientProvider>
+    <ErrorBoundary fallback={<ErrorPage />}>
+        <HomePage />
+    </ErrorBoundary>
   );
 }
 

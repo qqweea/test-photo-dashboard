@@ -7,6 +7,7 @@ const reducer = (state, action) => {
       albums: {
         ...state.albums,
         isLoading: true,
+        error: null,
       },
     };
   }
@@ -31,7 +32,7 @@ const reducer = (state, action) => {
       albums: {
         ...state.albums,
         isLoading: false,
-        error: action.payload.error,
+        error: action.payload,
       },
     };
   }
@@ -42,6 +43,7 @@ const reducer = (state, action) => {
         ...state.photos,
         isLoading: true,
         items: state.isDesktop ? [] : [...state.photos.items],
+        error: null,
       },
     };
   }
@@ -53,6 +55,7 @@ const reducer = (state, action) => {
         isLoading: false,
         items: [...state.photos.items, ...action.payload.photos],
         totalItems: Number(action.payload.totalItems),
+        error: null,
       },
     };
   }
@@ -61,6 +64,7 @@ const reducer = (state, action) => {
       ...state,
       photos: {
         ...state.photos,
+        error: action.payload,
         isLoading: false,
       },
     };

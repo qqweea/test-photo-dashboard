@@ -5,7 +5,19 @@ import { PaginationWrapper } from './styles';
 import { injectPhotosPartialState } from 'context/photos';
 
 const DesktopPagination = (props) => {
-  const { currentPage, totalItems, itemsPerPage, onPageChange, isLoading } = props;
+  const {
+    currentPage,
+    totalItems,
+    itemsPerPage,
+    onPageChange,
+    photosError,
+    albumsError,
+    isLoading,
+  } = props;
+
+  if (!isLoading && (photosError || albumsError)) {
+    return null;
+  }
 
   return (
     <PaginationWrapper>
@@ -28,6 +40,8 @@ DesktopPagination.propTypes = {
   itemsPerPage: PropTypes.number,
   onPageChange: PropTypes.func,
   isLoading: PropTypes.bool,
+  photosError: PropTypes.object,
+  albumsError: PropTypes.object,
 };
 
 DesktopPagination.defaultProps = {
@@ -39,6 +53,8 @@ DesktopPagination.defaultProps = {
 };
 
 const mapStateToProps = (state) => ({
+  albumsError: state.albums.error,
+  photosError: state.photos.error,
   currentPage: state.query.currentPage,
   itemsPerPage: state.query.itemsPerPage,
   onPageChange: state.photosActions.setCurrentPage,

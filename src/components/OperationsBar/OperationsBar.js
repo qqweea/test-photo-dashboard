@@ -8,7 +8,20 @@ import PropTypes from 'prop-types';
 import { OperationsBarContainer } from './styles';
 
 const OperationsBar = (props) => {
-  const { albumId, itemsPerPage, albums, onSetSearch, onAlbumChange, onItemsPerPageChange } = props;
+  const {
+    albumId,
+    itemsPerPage,
+    albums,
+    onSetSearch,
+    onAlbumChange,
+    onItemsPerPageChange,
+    photosError,
+    albumsError,
+  } = props;
+
+  if (photosError || albumsError) {
+    return null;
+  }
 
   return (
     <OperationsBarContainer>
@@ -30,6 +43,7 @@ const OperationsBar = (props) => {
             value={albumId}
             options={albums}
             onChange={onAlbumChange}
+            optionFilterProp="children"
             showSearch
           />
         </Col>
@@ -54,7 +68,9 @@ OperationsBar.propTypes = {
   onAlbumChange: PropTypes.func,
   onItemsPerPageChange: PropTypes.func,
   onSetSearch: PropTypes.func,
-}
+  photosError: PropTypes.object,
+  albumsError: PropTypes.object,
+};
 
 const mapStateToProps = (state) => ({
   albumId: state.query.albumId,
@@ -63,6 +79,8 @@ const mapStateToProps = (state) => ({
   onAlbumChange: state.photosActions.setCurrentAlbum,
   onItemsPerPageChange: state.photosActions.setItemsPerPage,
   onSetSearch: state.photosActions.setSearch,
+  albumsError: state.albums.error,
+  photosError: state.photos.error,
 });
 
 export default injectPhotosPartialState(mapStateToProps)(OperationsBar);

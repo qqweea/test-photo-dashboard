@@ -7,6 +7,9 @@ export const StyledTitle = styled(Typography.Title)`
     font-size: 1.5rem;
     margin-bottom: 0;
   }
+  a {
+    color: #fff;
+  }
 `;
 
 export const StyledHeader = styled(({ isMobile, ...rest }) => <Layout.Header {...rest} />)`

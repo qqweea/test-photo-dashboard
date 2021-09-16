@@ -25,7 +25,7 @@ const AppLayout = (props) => {
       <StyledHeader isMobile={!isDesktop}>
         <Row align="middle">
           <Col xs={22} md={24}>
-            <StyledTitle>{messages.headers.title}</StyledTitle>
+            <StyledTitle><a href="/">{messages.headers.title}</a></StyledTitle>
           </Col>
           {!isDesktop && (
             <Col xs={2}>

@@ -21,7 +21,7 @@ class Api {
     }
   };
 
-  fetchPosts = async (queryState) => {
+  fetchPhotos = async (queryState) => {
     const { currentPage, itemsPerPage, search, albumId } = queryState;
     try {
       const { data, headers } = await this.axios.get('/photos', {

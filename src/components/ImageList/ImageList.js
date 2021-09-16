@@ -1,5 +1,6 @@
 import { Col, Row } from 'antd';
 import ImageCard, { ImageCardSkeleton } from 'components/ImageCard';
+import { injectPhotosPartialState } from 'context/photos';
 import PropTypes from 'prop-types';
 import React from 'react';
 
@@ -29,11 +30,19 @@ ImageList.propTypes = {
     })
   ),
   isLoading: PropTypes.bool,
+  incrementCurrentPage: PropTypes.func,
 };
 
 ImageList.defaultProps = {
   items: [],
   isLoading: false,
+  incrementCurrentPage: () => {},
 };
 
-export default ImageList;
+const mapStateToProps = (state) => ({
+  items: state.photos.items,
+  isLoading: state.photos.isLoading,
+  incrementCurrentPage: state.photosActions.incrementCurrentPage,
+});
+
+export default injectPhotosPartialState(mapStateToProps)(ImageList);

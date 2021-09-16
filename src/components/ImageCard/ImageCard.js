@@ -1,12 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image } from 'antd';
+import { Image } from 'antd';
 import messages from 'utils/messages';
+import { StyledCard } from './styles';
 
 const ImageCard = (props) => {
   const { title, url, thumbnailUrl } = props;
   return (
-    <Card
+    <StyledCard
       bordered
       hoverable
       cover={
@@ -20,8 +21,8 @@ const ImageCard = (props) => {
         />
       }
     >
-      <Card.Meta title={title} />
-    </Card>
+      <StyledCard.Meta title={title} />
+    </StyledCard>
   );
 };
 

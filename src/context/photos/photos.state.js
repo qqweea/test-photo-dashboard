@@ -4,6 +4,7 @@ import reducer from './photos.reducer';
 import { actions } from './photos.actions';
 import useIsDesktop from 'hooks/useIsDesktop';
 import messages from 'utils/messages';
+import { getLsItemsPerPage, setLsItemsPerPage } from 'utils/helpers';
 
 const PhotosContext = createContext();
 
@@ -26,7 +27,7 @@ export const withPhotosContext = (WrappedComponent) => (props) => {
     },
     query: {
       currentPage: 1,
-      itemsPerPage: 20,
+      itemsPerPage: getLsItemsPerPage(),
       search: '',
       albumId: 0,
     },
@@ -40,20 +41,21 @@ export const withPhotosContext = (WrappedComponent) => (props) => {
   };
 
   const incrementCurrentPage = () => {
-    dispatch(actions.incrementPage())
-  }
+    dispatch(actions.incrementPage());
+  };
 
   const setCurrentAlbum = (album) => {
-    dispatch(actions.setAlbum(album))
-  }
+    dispatch(actions.setAlbum(album));
+  };
 
   const setItemsPerPage = (itemsPerPage) => {
     dispatch(actions.setItemsPerPage(itemsPerPage));
-  }
+    setLsItemsPerPage(itemsPerPage);
+  };
 
   const setSearch = (search) => {
     dispatch(actions.setSearch(search));
-  }
+  };
 
   const photosActions = {
     setCurrentPage,

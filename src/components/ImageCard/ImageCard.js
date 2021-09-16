@@ -1,18 +1,20 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { Card, Image } from 'antd';
+import { Image } from 'antd';
 import messages from 'utils/messages';
+import { StyledCard } from './styles';
 
 const ImageCard = (props) => {
   const { title, url, thumbnailUrl } = props;
   return (
-    <Card
+    <StyledCard
       bordered
       hoverable
       cover={
         <Image
           width={'100%'}
           src={thumbnailUrl}
+          fallback={`${process.env.PUBLIC_URL}/broken.png`}
           preview={{
             src: url,
             mask: messages.misc.viewFullSize,
@@ -20,8 +22,8 @@ const ImageCard = (props) => {
         />
       }
     >
-      <Card.Meta title={title} />
-    </Card>
+      <StyledCard.Meta title={title} />
+    </StyledCard>
   );
 };
 

@@ -5,3 +5,5 @@ export const ITEMS_PER_PAGE_OPTIONS = [
   { value: 50, optionLabel: 50 },
   { value: 100, optionLabel: 100 },
 ];
+
+export const DEFAULT_ITEMS_PER_PAGE = 20;

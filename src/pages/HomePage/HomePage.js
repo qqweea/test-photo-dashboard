@@ -1,5 +1,5 @@
 import DesktopPagination from 'components/DesktopPagination';
-import ImageList from 'components/ImageList/ImageList';
+import ImageList from 'components/ImageList';
 import OperationsBar from 'components/OperationsBar';
 import useIsDesktop from 'hooks/useIsDesktop';
 import AppLayout from 'layout/AppLayout/AppLayout';

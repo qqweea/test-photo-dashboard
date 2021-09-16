@@ -49,38 +49,32 @@ const ImageList = (props) => {
   }
 
   return (
-    <>
-      <InfiniteScroll
-        dataLength={items.length}
-        next={loadMore}
-        style={{ overflow: 'initial' }}
-        endMessage={
-          <Empty
-            style={{ marginTop: '2rem' }}
-            description={
-              <Typography.Text strong>
-                Yay! You have seen it all
-              </Typography.Text>
-            }
-          />
-        }
-        hasMore={hasMore}
-      >
-        <Row gutter={[12, 12]}>
-          {items.map((item) => (
-            <Col xs={24} sm={12} md={8} lg={6} key={item.id}>
-              <ImageCard {...item} />
+    <InfiniteScroll
+      dataLength={items.length}
+      next={loadMore}
+      style={{ overflow: 'initial' }}
+      endMessage={
+        <Empty
+          style={{ marginTop: '2rem' }}
+          description={<Typography.Text strong>Yay! You have seen it all</Typography.Text>}
+        />
+      }
+      hasMore={hasMore}
+    >
+      <Row gutter={[12, 12]}>
+        {items.map((item) => (
+          <Col xs={24} sm={12} md={8} lg={6} key={item.id}>
+            <ImageCard {...item} />
+          </Col>
+        ))}
+        {isLoading &&
+          new Array(3).fill().map((val, i) => (
+            <Col xs={24} sm={12} md={8} lg={6} key={i}>
+              <ImageCardSkeleton />
             </Col>
           ))}
-          {isLoading &&
-            new Array(3).fill().map((val, i) => (
-              <Col xs={24} sm={12} md={8} lg={6} key={i}>
-                <ImageCardSkeleton />
-              </Col>
-            ))}
-        </Row>
-      </InfiniteScroll>
-    </>
+      </Row>
+    </InfiniteScroll>
   );
 };
 

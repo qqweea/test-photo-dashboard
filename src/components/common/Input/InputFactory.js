@@ -18,7 +18,7 @@ const InputFactory = (props) => {
 
 InputFactory.propTypes = {
   label: PropTypes.string,
-  type: PropTypes.oneOf(['text', 'select']),
+  type: PropTypes.oneOf(['text', 'select', 'search']),
 };
 
 InputFactory.defaultProps = {

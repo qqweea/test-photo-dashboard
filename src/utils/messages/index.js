@@ -17,6 +17,9 @@ const placeholders = {
 const misc = {
   allAlbums: 'All albums',
   viewFullSize: 'View full size',
+  errorGlobal: 'Oops, something went wrong',
+  tryLater: 'Please try again later',
+  nothingFound: 'No photos found',
 };
 
 const messages = {

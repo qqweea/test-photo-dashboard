@@ -5,6 +5,7 @@ import useIsDesktop from 'hooks/useIsDesktop';
 import PropTypes from 'prop-types';
 import React from 'react';
 import InfiniteScroll from 'react-infinite-scroll-component';
+import messages from 'utils/messages';
 
 const ImageList = (props) => {
   const { items, isLoading, search, totalItems, currentPage, itemsPerPage, loadMore } = props;
@@ -17,12 +18,12 @@ const ImageList = (props) => {
         image={Empty.PRESENTED_IMAGE_SIMPLE}
         description={
           search ? (
-            <Typography.Text textCenter strong type="warning">
-              No photos found
+            <Typography.Text strong type="warning">
+              {messages.misc.nothingFound}
             </Typography.Text>
           ) : (
-            <Typography.Text textCenter strong type="danger">
-              Something went wrong
+            <Typography.Text strong type="danger">
+              {messages.misc.errorGlobal}
             </Typography.Text>
           )
         }

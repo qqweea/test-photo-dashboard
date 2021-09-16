@@ -83,16 +83,16 @@ export const withPhotosContext = (WrappedComponent) => (props) => {
   useEffect(() => {
     const api = new Api();
 
-    const fetchPosts = async () => {
+    const fetchPhotos = async () => {
       dispatch(actions.fetchPhotosRequest());
       try {
-        const data = await api.fetchPosts(state.query);
+        const data = await api.fetchPhotos(state.query);
         dispatch(actions.fetchPhotosFulfilled(data));
       } catch (err) {
         dispatch(actions.fetchPhotosRejected(err));
       }
     };
-    fetchPosts();
+    fetchPhotos();
   }, [state.query]);
 
   useEffect(() => {

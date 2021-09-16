@@ -1,4 +1,4 @@
-import { Col, Row, Typography } from 'antd';
+import { Typography } from 'antd';
 import { Bug } from 'components/common/Icons';
 import AppLayout from 'layout/AppLayout/AppLayout';
 import React from 'react';
